@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE html> 
 <html>
 <head>
-<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1" charset="utf-8">
 <title>jQuery Mobile Web App</title>
 <link href="jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css"/>
 <link href="jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
 <script src="jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
 <style>
+
 .ui-content
 {
 	padding:0px;	
@@ -16,25 +17,40 @@
 </head> 
 <body> 
 
-<div data-role="page" id="page">
-	<div data-role="header">
-		<h1>
-        전시관 선택하기 <br>	       			          
-		
-	<script>
+<script>
 	var point = 0;
-	document.write(point + " point<br>");
-	</script>
-        
+	var path = 0;
+	function getPoint() {
+		point = point +1 ;
+		$(".pointdisplay").html(point);
+	}
+	
+	function pathNum(){
+		path = path + 1;
+		$(".pathdisplay").html(path);
+	}
+	
+	function passCheck(){
+		if( point < 9){
+			return 0;
+		}
+	}
+// setInterval('console.log(point)',2000);
+</script>
+
+
+<div data-role="page" id="page" style="width:480px;">
+	<div data-role="header">
+		<h1> 중앙박물관에 오신 걸 환영합니다. <br>	       			          
+		<span class="pointdisplay"></span> 
         </h1>
 	</div>
 	<div data-role="content">
 
-    <img src="image/intro.gif" width="460" height="768" usemap="#Map1">
-    
+    <img src="image/intro.gif" usemap="#Map1">
       <map name="Map1">
 
-        <area shape="rect" coords="132,499,325,574" href="#map">
+        <area shape="rect" coords="132,499,325,574" href="#map" >
       </map>
 	</div>
 	<div data-role="footer">
@@ -42,16 +58,12 @@
 	</div>
 </div>
 
-<div data-role="page" id="map">
+<div data-role="page" id="map" style="width:480px;">
 	<div data-role="header">
 		<h1>전시관 선택하기
-        <br>
-        <script>
-		document.write(point+ " point <br>");
-		</script>
         </h1>
 	</div>
-	<div data-role="content"><img src="image/map.gif" width="460" height="768" usemap="#Map2">
+	<div data-role="content"><img src="image/map.gif" usemap="#Map2">
       <map name="Map2">
         <area shape="rect" coords="43,66,226,393" href="#problem1">
       </map>
@@ -61,44 +73,64 @@
 	</div>
 </div>
 
-<div data-role="page" id="problem1">
+<div data-role="page" id="problem1" style="width:480px;">
 
 	<div data-role="header">
 		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
+		<span class="pointdisplay"></span> point</h1>
 	</div>
-	
-    <div data-role="content"><img src="problem/problem101-1.GIF" width="460" height="768" usemap="#Map3">
+
+
+    <div data-role="content"><img src="problem2/problem101-1.gif" usemap="#Map3">
     <map name="Map3">
         <area shape="poly" coords="222,270,122,382,124,448,193,501,306,490,335,429,291,301,250,272" href="#select1">
-      </map>
+      
+    </map>
   </div>
 	<div data-role="footer">
 	  <h4>희슈크림</h4>
 	</div>
 </div>
 
-<div data-role="page" id="select1">
+<div data-role="page" id="correct1" style="width:480px;">
+	<div data-role="header">
+   	  <h1>정답입니다  <br>
+		<span class="pointdisplay"></span>   
+   		point
+        </h1>
+    </div>
+	<div data-role="content">
+	  
+  <img src="image/correct_answer.gif" usemap="#Map5">
+  <map name="Map5">
+    <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem2">
+  </map>
+  </div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+<div data-role="page" id="select1" style="width:480px;">
 	<div data-role="header">
     	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
+	</h1>
     </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map4">
+	<div data-role="content"><img src="image/selectpage1.gif" usemap="#Map4">
       <map name="Map4">
-        <area shape="poly" coords="68,244,5,375,43,458,89,469,151,408,133,326,82,256" href="#correct1">
-        <area shape="poly" coords="28,7,14,145,66,209,110,138" href="#wrong1">
-        <area shape="poly" coords="207,30,144,38,198,203,240,207,253,46,269,40,267,32" href="#wrong1">
-        <area shape="poly" coords="370,35,318,168,373,243,424,186" href="#wrong1">
-        <area shape="poly" coords="206,275,187,430,211,496,238,436" href="#wrong1">
-        <area shape="poly" coords="352,309,266,397,308,460,415,466,438,406,415,331" href="#wrong1">
-        <area shape="poly" coords="50,477,19,528,23,614,99,613,194,611,179,485,168,471" href="#wrong1">
-        <area shape="poly" coords="361,513,340,617,338,706,360,749,399,708,376,518" href="#wrong1">
-        <area shape="poly" coords="36,622,4,642,36,736,107,739,194,737,210,635,178,616" href="#wrong1">
+        <area shape="poly" coords="222,11,159,142,197,225,243,236,305,175,287,93,236,23" href="#correct1" 
+
+onclick="getPoint()">
+        <area shape="rect" coords="266,667,431,747" href="#problem2" onclick="pathNum()">
+        <area shape="rect" coords="25,666,205,749" href="#problem1">
+<area shape="poly" coords="28,7,14,145,66,209,110,138" href="#wrong1">
+        <area shape="poly" coords="60,264,-3,272,42,438,93,441,131,284,122,274,120,266" href="#wrong1">
+        <area shape="poly" coords="385,16,333,149,388,224,439,167" href="#wrong1">
+        <area shape="poly" coords="218,261,199,416,223,482,250,422" href="#wrong1">
+        <area shape="poly" coords="370,278,323,329,345,398,422,399,456,375,433,300" href="#wrong1">
+        <area shape="poly" coords="33,477,2,528,6,614,82,613,177,611,162,485,151,471" href="#wrong1">
+        <area shape="poly" coords="399,419,385,525,376,612,402,634,435,608,414,424" href="#wrong1">
+        <area shape="poly" coords="201,492,188,500,193,590,264,593,351,591,367,489,335,479" href="#wrong1">
       </map>
   </div>
 	<div data-role="footer">
@@ -110,7 +142,7 @@
 
 
 
-<div data-role="page" id="wrong1">
+<div data-role="page" id="wrong1" style="width:480px;">
 	
 
 	<div data-role="header">
@@ -118,7 +150,7 @@
     </div>
 	<div data-role="content">
 	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map100">
+  <img src="image/wrong.gif" usemap="#Map100">
   <map name="Map100">
     <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem1">
   </map>
@@ -146,43 +178,16 @@
 
 
 
-<div data-role="page" id="correct1">
-	
 
-	<div data-role="header">
-   	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
-   
-    </div>
-	<div data-role="content">
-	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map5">
-  <map name="Map5">
-    <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem2">
-  </map>
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
-
-
-
-<div data-role="page" id="problem2">
+<div data-role="page" id="problem2" style="width:480px;">
 	<div data-role="header">
 		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
 	</div>
 	
-    <div data-role="content"><img src="problem/problem101-2.GIF" width="460" height="768" usemap="#Map6">
+    <div data-role="content"><img src="problem2/problem101-2.gif" usemap="#Map6">
       <map name="Map6">
         <area shape="poly" coords="233,248,135,425,256,522,327,435" href="#select2">
+       
       </map>
   </div>
 	<div data-role="footer">
@@ -190,27 +195,29 @@
 	</div>
 </div>
 
-<div data-role="page" id="select2">
+
+<div data-role="page" id="select2" style="width:480px;">
 	<div data-role="header">
     	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
+		</h1>
     </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map7">
+	<div data-role="content"><img src="image/selectpage2.gif" usemap="#Map7">
       <map name="Map7">
-        <area shape="poly" coords="368,37,324,171,383,241,420,177" href="#correct2">
+        <area shape="poly" coords="63,18,19,152,78,222,115,158" href="#correct2" onclick="getPoint()">
+         <area shape="rect" coords="262,661,421,739" href="#problem3" onclick="pathNum()">
         
-        
-        <area shape="poly" coords="194,27,138,26,168,178,214,221,258,155,275,28,153,29" href="#wrong2">
-        <area shape="poly" coords="26,7,41,202,69,220,103,140" href="#wrong2">
-        <area shape="poly" coords="70,244,12,388,82,482,159,396,133,320" href="#wrong2">
-        <area shape="poly" coords="209,274,192,409,209,486,228,441" href="#wrong2">
-        <area shape="poly" coords="345,312,275,336,265,413,283,474,330,480,414,479,435,452,446,404,429,335,398,313" href="#wrong2">
+        <area shape="poly" coords="216,32,160,31,190,183,236,226,280,160,297,33,175,34" href="#wrong2">
+        <area shape="poly" coords="365,14,380,209,408,227,442,147" href="#wrong2">
+        <area shape="poly" coords="73,245,-1,372,80,442,146,380,120,304" href="#wrong2">
+        <area shape="poly" coords="237,419,220,554,237,631,256,586" href="#wrong2">
+        <area shape="poly" coords="353,248,326,300,315,347,327,383,338,416,422,415,443,388,454,340,437,271,406,249" 
 
-        <area shape="poly" coords="57,482,16,537,30,613,192,603,181,513,130,485" href="#wrong2">
-        <area shape="poly" coords="355,514,334,687,360,751,396,702,375,518" href="#wrong2">
-        <area shape="poly" coords="37,623,10,647,47,744,181,728,209,644,175,621" href="#wrong2">
+href="#wrong2">
+
+        <area shape="poly" coords="48,478,7,533,21,609,183,599,172,509,121,481" href="#wrong2">
+        <area shape="rect" coords="16,665,199,740" href="#problem2">
+<area shape="poly" coords="403,433,375,616,402,633,435,616,416,447" href="#wrong2">
+        <area shape="poly" coords="166,286,157,316,182,382,296,377,309,305,290,283" href="#wrong2">
       </map>
       
   </div>
@@ -220,7 +227,10 @@
 </div>
 
 
-<div data-role="page" id="wrong2">
+
+
+
+<div data-role="page" id="wrong2" style="width:480px;">
 	
 
 	<div data-role="header">
@@ -228,7 +238,7 @@
     </div>
 	<div data-role="content">
 	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map101">
+  <img src="image/wrong.gif" usemap="#Map101">
   <map name="Map101">
     <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem2">
   </map>
@@ -252,29 +262,6 @@
 
 
 
-<div data-role="page" id="correct2">
-	
-
-	<div data-role="header">
-   	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
-   
-    </div>
-	<div data-role="content">
-	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map8">
-  <map name="Map8">
-    <area shape="rect" coords="127,281,336,488" href="#problem3">
-  </map>
- 
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
 
 
 
@@ -288,18 +275,16 @@
 
 
 
-<div data-role="page" id="problem3">
+<div data-role="page" id="problem3" style="width:480px;">
 	<div data-role="header">
 		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
+</h1>
 	</div>
 	
-    <div data-role="content"><img src="problem/problem102-3.GIF" width="460" height="768" usemap="#Map9">
+    <div data-role="content"><img src="problem2/problem102-3.gif" usemap="#Map9">
       <map name="Map9">
         <area shape="poly" coords="233,248,123,305,216,512,327,435" href="#select3">
+       
       </map>
   </div>
 	<div data-role="footer">
@@ -307,29 +292,30 @@
 	</div>
 </div>
 
-<div data-role="page" id="select3">
+<div data-role="page" id="select3" style="width:480px;">
 	<div data-role="header">
     	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
+		</h1>
     </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map10">
+	<div data-role="content"><img src="image/selectpage3.gif"  usemap="#Map10">
       <map name="Map10">
-        <area shape="poly" coords="29,-2,0,152,59,222,108,152" href="#correct3">
-        
-                <area shape="poly" coords="194,27,138,26,168,178,214,221,258,155,275,28,153,29" href="#wrong3">
-        <area shape="poly" coords="70,244,12,388,82,482,159,396,133,320" href="#wrong3">
-        <area shape="poly" coords="209,274,192,409,209,486,228,441" href="#wrong3">
-        <area shape="poly" coords="345,312,275,336,265,413,283,474,330,480,414,479,435,452,446,404,429,335,398,313" href="#wrong3">
+        <area shape="poly" coords="363,16,334,170,393,240,442,170" href="#correct3" onclick="getPoint()">
+         <area shape="rect" coords="266,675,427,749" href="#problem4" onclick="pathNum()">
+                <area shape="poly" coords="365,245,344,261,364,385,403,411,439,375,446,246,324,247" href="#wrong3">
+        <area shape="poly" coords="232,427,174,571,244,665,321,579,295,503" href="#wrong3">
+        <area shape="poly" coords="405,413,388,548,405,625,424,580" href="#wrong3">
+        <area shape="poly" coords="232,246,162,270,152,347,170,408,217,414,301,413,322,386,333,338,316,269,285,247" 
 
-        <area shape="poly" coords="57,482,16,537,30,613,192,603,181,513,130,485" href="#wrong3">
-        <area shape="poly" coords="355,514,334,687,360,751,396,702,375,518" href="#wrong3">
-        <area shape="poly" coords="37,623,10,647,47,744,181,728,209,644,175,621" href="#wrong3">
+href="#wrong3">
+
+        <area shape="poly" coords="193,56,152,111,181,186,292,176,317,87,266,59" href="#wrong3">
+        <area shape="poly" coords="80,428,44,575,100,645,138,589,100,432" href="#wrong3">
+        <area shape="poly" coords="21,286,-6,310,31,407,138,398,149,339,120,268" href="#wrong3">
         
         
         
-        <area shape="poly" coords="369,38,315,173,381,245,420,178" href="#wrong3">
+        <area shape="poly" coords="94,25,40,160,106,232,145,165" href="#wrong3">
+        <area shape="rect" coords="14,676,197,749" href="#problem3">
       </map>
       
 	</div>
@@ -341,7 +327,8 @@
 
 
 
-<div data-role="page" id="wrong3">
+
+<div data-role="page" id="wrong3" style="width:480px;">
 	
 
 	<div data-role="header">
@@ -349,7 +336,7 @@
     </div>
 	<div data-role="content">
 	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map102">
+  <img src="image/wrong.gif" usemap="#Map102">
   <map name="Map102">
     <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem3">
   </map>
@@ -366,29 +353,6 @@
 
 
 
-<div data-role="page" id="correct3">
-	
-
-	<div data-role="header">
-   	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
-   
-    </div>
-	<div data-role="content">
-	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map11">
-  <map name="Map11">
-    <area shape="rect" coords="127,281,336,488" href="#problem4">
-  </map>
- 
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
 
 
 
@@ -416,18 +380,16 @@
 
 
 
-<div data-role="page" id="problem4">
+<div data-role="page" id="problem4" style="width:480px;">
 	<div data-role="header">
 		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
+</h1>
 	</div>
 	
-    <div data-role="content"><img src="problem/problem102-5.GIF" width="460" height="768" usemap="#Map12">
+    <div data-role="content"><img src="problem2/problem102-5.gif" usemap="#Map12">
       <map name="Map12">
         <area shape="poly" coords="316,279,136,274,179,510,279,505" href="#select4">
+      
       </map>
   </div>
 	<div data-role="footer">
@@ -446,29 +408,30 @@
 
 
 
-<div data-role="page" id="select4">
+<div data-role="page" id="select4" style="width:480px;">
 	<div data-role="header">
     	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
+	</h1>
     </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map13">
+	<div data-role="content"><img src="image/selectpage4.gif" usemap="#Map13">
       <map name="Map13">
-        <area shape="poly" coords="274,34,140,31,178,210,238,211" href="#correct4">
-        
-         <area shape="poly" coords="53,19,-3,18,27,170,73,213,117,147,72,13,20,13" href="#wrong4">
-        <area shape="poly" coords="70,244,12,388,82,482,159,396,133,320" href="#wrong4">
-        <area shape="poly" coords="209,274,192,409,209,486,228,441" href="#wrong4">
-        <area shape="poly" coords="345,312,275,336,265,413,283,474,330,480,414,479,435,452,446,404,429,335,398,313" href="#wrong4">
+        <area shape="poly" coords="151,477,17,474,55,653,115,654" href="#correct4" onclick="getPoint()">
+          <area shape="rect" coords="274,668,433,751" href="#problem5" onclick="pathNum()">
+         <area shape="poly" coords="383,260,327,259,357,411,403,454,447,388,402,254,350,254" href="#wrong4">
+        <area shape="poly" coords="231,227,173,371,243,465,320,379,294,303" href="#wrong4">
+        <area shape="poly" coords="103,21,86,156,103,233,122,188" href="#wrong4">
+        <area shape="poly" coords="202,37,163,62,159,117,168,171,195,173,261,181,282,158,293,110,276,51,246,36" 
 
-        <area shape="poly" coords="57,482,16,537,30,613,192,603,181,513,130,485" href="#wrong4">
-        <area shape="poly" coords="355,514,334,687,360,751,396,702,375,518" href="#wrong4">
-        <area shape="poly" coords="37,623,10,647,47,744,181,728,209,644,175,621" href="#wrong4">
+href="#wrong4">
+
+        <area shape="poly" coords="48,279,7,334,37,393,139,396,152,319,121,282" href="#wrong4">
+        <area shape="poly" coords="383,483,359,617,395,656,421,632,403,472" href="#wrong4">
+        <area shape="poly" coords="174,520,164,549,184,641,305,625,317,549,312,518" href="#wrong4">
         
         
         
-        <area shape="poly" coords="369,38,315,173,381,245,420,178" href="#wrong4">
+        <area shape="poly" coords="381,15,327,150,393,222,432,155" href="#wrong4">
+        <area shape="rect" coords="28,672,208,748" href="#problem4">
       </map>
       
   </div>
@@ -486,7 +449,7 @@
 
 
 
-<div data-role="page" id="wrong4">
+<div data-role="page" id="wrong4" style="width:480px;">
 	
 
 	<div data-role="header">
@@ -494,7 +457,7 @@
     </div>
 	<div data-role="content">
 	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map103">
+  <img src="image/wrong.gif" usemap="#Map103">
   <map name="Map103">
     <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem4">
   </map>
@@ -507,29 +470,6 @@
 
 
 
-<div data-role="page" id="correct4">
-	
-
-	<div data-role="header">
-   	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
-   
-    </div>
-	<div data-role="content">
-	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map14">
-  <map name="Map14">
-    <area shape="rect" coords="127,281,336,488" href="#problem5">
-  </map>
- 
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
 
 
 
@@ -539,18 +479,16 @@
 
 
 
-<div data-role="page" id="problem5">
+<div data-role="page" id="problem5" style="width:480px;">
 	<div data-role="header">
 		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
+</h1>
 	</div>
 	
-    <div data-role="content"><img src="problem/problem102-4.GIF" width="460" height="768" usemap="#Map15">
+    <div data-role="content"><img src="problem2/problem102-4.gif" usemap="#Map15">
       <map name="Map15">
         <area shape="poly" coords="347,315,107,318,153,504,338,501" href="#select5">
+        
       </map>
   </div>
 	<div data-role="footer">
@@ -558,35 +496,32 @@
 	</div>
 </div>
 
-<div data-role="page" id="select5">
+<div data-role="page" id="select5" style="width:480px;">
 	<div data-role="header">
     	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
+		</h1>
     </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map16">
+	<div data-role="content"><img src="image/selectpage5.gif"  usemap="#Map16">
       <map name="Map16">
-        <area shape="poly" coords="435,314,272,312,290,475,448,477" href="#correct5">
-        
-        
-        
-        
-                
+        <area shape="poly" coords="300,509,191,501,200,624,306,625" href="#correct5" onclick="getPoint()">
+        <area shape="rect" coords="273,664,424,740" href="#problem6" onclick="pathNum()">
          <area shape="poly" coords="53,19,-3,18,27,170,73,213,117,147,72,13,20,13" href="#wrong5">
-        <area shape="poly" coords="70,244,12,388,82,482,159,396,133,320" href="#wrong5">
-        <area shape="poly" coords="209,274,192,409,209,486,228,441" href="#wrong5">
-        <area shape="poly" coords="206,21,136,45,144,122,166,179,197,199,257,182,262,161,273,110,281,44,259,27" href="#wrong5">
+        <area shape="poly" coords="207,-1,149,143,219,237,296,151,270,75" href="#wrong5">
+        <area shape="poly" coords="390,224,373,359,390,436,409,391" href="#wrong5">
+        <area shape="poly" coords="240,253,170,277,178,354,200,411,231,431,291,414,296,393,307,342,315,276,293,259" 
 
-        <area shape="poly" coords="57,482,16,537,30,613,192,603,181,513,130,485" href="#wrong5">
-        <area shape="poly" coords="355,514,334,687,360,751,396,702,375,518" href="#wrong5">
-        <area shape="poly" coords="37,623,10,647,47,744,181,728,209,644,175,621" href="#wrong5">
+href="#wrong5">
+
+        <area shape="poly" coords="46,495,5,550,19,626,181,616,170,526,119,498" href="#wrong5">
+        <area shape="poly" coords="388,459,365,593,391,657,427,608,403,465" href="#wrong5">
+        <area shape="poly" coords="320,85,293,109,332,195,436,187,457,116,453,91" href="#wrong5">
         
-        <area shape="poly" coords="369,38,315,173,381,245,420,178" href="#wrong5">
+        <area shape="poly" coords="94,267,40,402,106,474,145,407" href="#wrong5">
         
         
         
         
+        <area shape="rect" coords="19,664,200,743" href="#problem5">
       </map>
       
   </div>
@@ -598,7 +533,8 @@
 
 
 
-<div data-role="page" id="wrong5">
+
+<div data-role="page" id="wrong5" style="width:480px;">
 	
 
 	<div data-role="header">
@@ -606,7 +542,7 @@
     </div>
 	<div data-role="content">
 	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map104">
+  <img src="image/wrong.gif" usemap="#Map104">
   <map name="Map104">
     <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem5">
   </map>
@@ -619,29 +555,6 @@
 
 
 
-<div data-role="page" id="correct5">
-	
-
-	<div data-role="header">
-   	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
-   
-    </div>
-	<div data-role="content">
-	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map17">
-  <map name="Map17">
-    <area shape="rect" coords="127,281,336,488" href="#problem6">
-  </map>
- 
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
 
 
 
@@ -650,18 +563,16 @@
 
 
 
-<div data-role="page" id="problem6">
+<div data-role="page" id="problem6" style="width:480px;">
 	<div data-role="header">
 		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
+</h1>
 	</div>
 	
-    <div data-role="content"><img src="problem/problem103-1.jpg" width="460" height="768" usemap="#Map18">
+    <div data-role="content"><img src="problem2/problem103-1.jpg" usemap="#Map18">
       <map name="Map18">
         <area shape="poly" coords="367,319,95,303,146,485,323,478" href="#select6">
+        
       </map>
   </div>
 	<div data-role="footer">
@@ -669,32 +580,33 @@
 	</div>
 </div>
 
-<div data-role="page" id="select6">
+<div data-role="page" id="select6" style="width:480px;">
 	<div data-role="header">
     	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
+		</h1>
     </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map19">
+	<div data-role="content"><img src="image/selectpage6.gif"  usemap="#Map19">
       <map name="Map19">
-        <area shape="poly" coords="212,622,7,623,32,731,163,728" href="#correct6">
+        <area shape="poly" coords="199,73,-6,74,19,182,150,179" href="#correct6" onclick="getPoint()">
         
+        <area shape="rect" coords="271,672,426,749" href="#problem7" onclick="pathNum()">
         
-        
-                 <area shape="poly" coords="53,19,-3,18,27,170,73,213,117,147,72,13,20,13" href="#wrong6">
-        <area shape="poly" coords="70,244,12,388,82,482,159,396,133,320" href="#wrong6">
-        <area shape="poly" coords="209,274,192,409,209,486,228,441" href="#wrong6">
-        <area shape="poly" coords="206,21,136,45,144,122,166,179,197,199,257,182,262,161,273,110,281,44,259,27" href="#wrong6">
+                 <area shape="poly" coords="410,496,369,498,383,641,421,666,432,623,429,490,377,490" href="#wrong6">
+        <area shape="poly" coords="256,223,198,367,268,461,345,375,319,299" href="#wrong6">
+        <area shape="poly" coords="402,259,385,394,402,471,421,426" href="#wrong6">
+        <area shape="poly" coords="265,47,215,71,220,130,225,191,261,187,298,171,321,173,313,124,317,83,311,57" 
 
-        <area shape="poly" coords="57,482,16,537,30,613,192,603,181,513,130,485" href="#wrong6">
-        <area shape="poly" coords="355,514,334,687,360,751,396,702,375,518" href="#wrong6">
-        <area shape="poly" coords="315,311,248,362,313,474,404,468,444,408,411,310" href="#wrong6">
+href="#wrong6">
+
+        <area shape="poly" coords="51,256,10,311,24,387,159,365,175,287,124,259" href="#wrong6">
+        <area shape="poly" coords="387,12,384,184,392,229,428,200,407,16" href="#wrong6">
+        <area shape="poly" coords="206,512,190,540,204,652,273,651,291,591,278,513" href="#wrong6">
         
-        <area shape="poly" coords="369,38,315,173,381,245,420,178" href="#wrong6">
+        <area shape="poly" coords="93,450,39,585,105,657,144,590" href="#wrong6">
         
         
         
+        <area shape="rect" coords="25,678,195,754" href="#problem6">
       </map>
       
   </div>
@@ -706,7 +618,22 @@
 
 
 
-<div data-role="page" id="wrong6">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div data-role="page" id="wrong6" style="width:480px;">
 	
 
 	<div data-role="header">
@@ -714,7 +641,7 @@
     </div>
 	<div data-role="content">
 	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map105">
+  <img src="image/wrong.gif" usemap="#Map105">
   <map name="Map105">
     <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem6">
   </map>
@@ -731,29 +658,6 @@
 
 
 
-<div data-role="page" id="correct6">
-	
-
-	<div data-role="header">
-   	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
-   
-    </div>
-	<div data-role="content">
-	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map20">
-  <map name="Map20">
-    <area shape="rect" coords="127,281,336,488" href="#problem7">
-  </map>
- 
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
 
 
 
@@ -767,18 +671,16 @@
 
 
 
-<div data-role="page" id="problem7">
+<div data-role="page" id="problem7" style="width:480px;">
 	<div data-role="header">
 		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
+</h1>
 	</div>
 	
-    <div data-role="content"><img src="problem/problem103-2.jpg" width="460" height="768" usemap="#Map21">
+    <div data-role="content"><img src="problem2/problem103-2.jpg" usemap="#Map21">
       <map name="Map21">
         <area shape="poly" coords="242,287,202,284,192,487,256,486" href="#select7">
+     
       </map>
   </div>
 	<div data-role="footer">
@@ -786,31 +688,32 @@
 	</div>
 </div>
 
-<div data-role="page" id="select7">
+<div data-role="page" id="select7" style="width:480px;">
 	<div data-role="header">
     	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
+	</h1>
     </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map22">
+	<div data-role="content"><img src="image/selectpage7.gif"  usemap="#Map22">
       <map name="Map22">
-        <area shape="poly" coords="380,508,351,506,336,746,398,749" href="#correct7">
+        <area shape="poly" coords="410,20,381,18,366,258,428,261" href="#correct7" onclick="getPoint()">
+        
+           <area shape="rect" coords="275,682,428,760" href="#problem8" onclick="pathNum()">
         
         
-        
-        
-                         <area shape="poly" coords="53,19,-3,18,27,170,73,213,117,147,72,13,20,13" href="#wrong7">
-        <area shape="poly" coords="70,244,12,388,82,482,159,396,133,320" href="#wrong7">
-        <area shape="poly" coords="209,265,180,399,193,498,238,500" href="#wrong7">
-        <area shape="poly" coords="206,21,136,45,144,122,166,179,197,199,257,182,262,161,273,110,281,44,259,27" href="#wrong7">
+                         <area shape="poly" coords="62,246,6,245,36,397,82,440,126,374,81,240,29,240" href="#wrong7">
+        <area shape="poly" coords="209,471,166,579,215,665,285,591,259,515" href="#wrong7">
+        <area shape="poly" coords="399,275,375,382,388,481,433,483" href="#wrong7">
+        <area shape="poly" coords="223,26,153,50,161,127,183,184,214,204,274,187,279,166,290,115,298,49,276,32" 
 
-        <area shape="poly" coords="57,482,16,537,30,613,192,603,181,513,130,485" href="#wrong7">
-        <area shape="poly" coords="17,630,29,739,134,738,201,722,185,621" href="#wrong7">
-        <area shape="poly" coords="315,311,248,362,313,474,404,468,444,408,411,310" href="#wrong7">
+href="#wrong7">
+
+        <area shape="poly" coords="13,62,-28,117,-14,193,148,183,137,93,86,65" href="#wrong7">
+        <area shape="poly" coords="19,532,25,626,62,663,109,611,106,532" href="#wrong7">
+        <area shape="poly" coords="327,533,309,561,334,643,410,653,450,593,408,532" href="#wrong7">
         
-        <area shape="poly" coords="369,38,315,173,381,245,420,178" href="#wrong7">
+        <area shape="poly" coords="231,240,177,375,243,447,282,380" href="#wrong7">
         
+        <area shape="rect" coords="25,679,200,756" href="#problem7">
       </map>
       
   </div>
@@ -821,7 +724,18 @@
 
 
 
-<div data-role="page" id="wrong7">
+
+
+
+
+
+
+
+
+
+
+
+<div data-role="page" id="wrong7" style="width:480px;">
 	
 
 	<div data-role="header">
@@ -829,7 +743,7 @@
     </div>
 	<div data-role="content">
 	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map106">
+  <img src="image/wrong.gif" usemap="#Map106">
   <map name="Map106">
     <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem7">
   </map>
@@ -844,29 +758,6 @@
 
 
 
-<div data-role="page" id="correct7">
-	
-
-	<div data-role="header">
-   	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
-   
-    </div>
-	<div data-role="content">
-	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map23">
-  <map name="Map23">
-    <area shape="rect" coords="127,281,336,488" href="#problem8">
-  </map>
- 
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
 
 
 
@@ -877,18 +768,17 @@
 
 
 
-<div data-role="page" id="problem8">
+
+<div data-role="page" id="problem8" style="width:480px;">
 	<div data-role="header">
 		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
+</h1>
 	</div>
 	
-    <div data-role="content"><img src="problem/problem103-3.jpg" width="460" height="768" usemap="#Map24">
+    <div data-role="content"><img src="problem2/problem103-3.jpg" usemap="#Map24">
       <map name="Map24">
         <area shape="poly" coords="249,291,209,288,199,491,263,490" href="#select8">
+   
       </map>
   </div>
 	<div data-role="footer">
@@ -896,30 +786,31 @@
 	</div>
 </div>
 
-<div data-role="page" id="select8">
+<div data-role="page" id="select8" style="width:480px;">
 	<div data-role="header">
     	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
+	</h1>
     </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map25">
+	<div data-role="content"><img src="image/selectpage8.gif"  usemap="#Map25">
       <map name="Map25">
-        <area shape="poly" coords="223,263,194,261,179,501,241,504" href="#correct8">
+        <area shape="poly" coords="402,232,373,230,363,446,407,425" href="#correct8" onclick="getPoint()">
         
         
+             <area shape="rect" coords="278,677,431,756" href="#problem9" onclick="pathNum()">
         
-        
-        <area shape="poly" coords="53,19,-3,18,27,170,73,213,117,147,72,13,20,13" href="#wrong8">
-        <area shape="poly" coords="70,244,12,388,82,482,159,396,133,320" href="#wrong8">
-        <area shape="poly" coords="364,498,342,704,362,783,396,689" href="#wrong8">
-        <area shape="poly" coords="206,21,136,45,144,122,166,179,197,199,257,182,262,161,273,110,281,44,259,27" href="#wrong8">
+        <area shape="poly" coords="224,472,194,506,211,624,244,666,288,600,243,466,191,466" href="#wrong8">
+        <area shape="poly" coords="61,233,3,377,74,444,109,382,124,309" href="#wrong8">
+        <area shape="poly" coords="224,6,202,212,225,225,240,197" href="#wrong8">
+        <area shape="poly" coords="223,263,170,285,184,354,200,403,214,441,274,424,279,403,290,352,298,286,276,269" 
 
-        <area shape="poly" coords="57,482,16,537,30,613,192,603,181,513,130,485" href="#wrong8">
-        <area shape="poly" coords="17,630,29,739,134,738,201,722,185,621" href="#wrong8">
-        <area shape="poly" coords="315,311,248,362,313,474,404,468,444,408,411,310" href="#wrong8">
+href="#wrong8">
+
+        <area shape="poly" coords="48,44,7,99,24,151,165,149,172,75,121,47" href="#wrong8">
+        <area shape="poly" coords="311,535,324,628,398,629,440,613,436,534" href="#wrong8">
+        <area shape="poly" coords="314,52,304,128,339,194,393,197,443,149,410,63" href="#wrong8">
         
-        <area shape="poly" coords="369,38,315,173,381,245,420,178" href="#wrong8">
+        <area shape="poly" coords="71,461,17,596,83,668,122,601" href="#wrong8">
+        <area shape="rect" coords="23,686,202,760" href="#problem8">
       </map>
       
   </div>
@@ -929,7 +820,19 @@
 </div>
 
 
-<div data-role="page" id="wrong8">
+
+
+
+
+
+
+
+
+
+
+
+
+<div data-role="page" id="wrong8" style="width:480px;">
 	
 
 	<div data-role="header">
@@ -937,7 +840,7 @@
     </div>
 	<div data-role="content">
 	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map107">
+  <img src="image/wrong.gif" usemap="#Map107">
   <map name="Map107">
     <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem8">
   </map>
@@ -959,20 +862,162 @@
 
 
 
-<div data-role="page" id="correct8">
+
+
+
+
+
+
+
+
+<div data-role="page" id="problem9" style="width:480px;">
+	<div data-role="header">
+		<h1>문제<br>
+
+        </h1>
+	</div>
+	
+    <div data-role="content"><img src="problem2/problem104-1.jpg" usemap="#Map27">
+      <map name="Map27">
+        <area shape="poly" coords="360,315,93,314,122,467,334,461" href="#select9">
+        
+      </map>
+  </div>
+	<div data-role="footer">
+	  <h4>희슈크림</h4>
+	</div>
+</div>
+
+<div data-role="page" id="select9" style="width:480px;">
+	<div data-role="header">
+    	<h1>선택하기<br>
+</h1>
+    </div>
+	<div data-role="content"><img src="image/selectpage9.gif"  usemap="#Map28">
+      <map name="Map28">
+        <area shape="poly" coords="320,54,127,53,159,186,300,187" href="#correct9" onclick="getPoint()">
+        
+        <area shape="rect" coords="278,680,433,759" href="#final" onclick="pathNum()">
+        
+        
+        
+        <area shape="poly" coords="62,195,6,194,36,346,82,389,126,323,81,189,29,189" href="#wrong9">
+        <area shape="poly" coords="244,469,185,596,261,640,288,600,306,528" href="#wrong9">
+        <area shape="poly" coords="381,440,364,575,381,652,400,607" href="#wrong9">
+        <area shape="poly" coords="77,457,7,481,15,558,37,615,68,635,107,606,111,589,144,546,127,494,111,475" 
+
+href="#wrong9">
+
+        <area shape="poly" coords="242,203,225,304,219,402,246,444,272,395,262,259" href="#wrong9">
+        <area shape="poly" coords="331,90,347,180,384,189,446,186,431,84" href="#wrong9">
+        <area shape="poly" coords="38,53,8,76,31,159,122,153,122,93,83,38" href="#wrong9">
+        
+        <area shape="poly" coords="377,224,323,359,389,431,428,364" href="#wrong9">
+        <area shape="rect" coords="22,681,202,751" href="#problem9">
+      </map>
+      
+  </div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+
+
+
+
+
+
+<div data-role="page" id="wrong9" style="width:480px;">
+	
+
+	<div data-role="header">
+   	  <h1>틀렸습니다.  <br>
+      </h1>
+    </div>
+	<div data-role="content">
+	  
+  <img src="image/wrong.gif" usemap="#Map108">
+  <map name="Map108">
+    <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem9">
+  </map>
+  n</div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+
+
+
+
+
+
+<div data-role="page" id="final" style="width:480px;">
+	
+
+	<div data-role="header">
+   	  <h1> 선사관 미션 클리어  <br>
+      <h1>나의 최종 점수는 ?
+<span class="pointdisplay"></span>
+        point
+       </h1>
+       <h1> 못 푼 문제 갯수는 ? 
+       <span class="pathdisplay"></span>개
+       </h1>
+    </div>
+	<div data-role="content">
+	  
+  <img src="image/final.gif" usemap="#Map1000">
+  <map name="Map1000">
+    <area shape="poly" coords="49,279,46,529,429,543,416,272,313,274" href="#map">
+  </map>
+  </div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+
+
+<div data-role="page" id="correct9" style="width:480px;">
 	
 
 	<div data-role="header">
    	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
+<span class="pointdisplay"></span>
+        point
+       </h1>
+    </div>
+	<div data-role="content">
+	  
+  <img src="image/correct_answer.gif" usemap="#Map29">
+  <map name="Map29">
+    <area shape="rect" coords="127,281,336,488" href="#final">
+  </map>
+ 
+  </div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+
+
+
+<div data-role="page" id="correct8" style="width:480px;">
+	
+
+	<div data-role="header">
+   	  <h1>정답입니다  <br>
+<span class="pointdisplay"></span>
+        point
+       </h1>
    
     </div>
 	<div data-role="content">
 	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map26">
+  <img src="image/correct_answer.gif" usemap="#Map26">
   <map name="Map26">
     <area shape="rect" coords="127,281,336,488" href="#problem9">
   </map>
@@ -986,110 +1031,20 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<div data-role="page" id="problem9">
-	<div data-role="header">
-		<h1>문제<br>
-
-        <script>
-		document.write(point+ " point <br>");
-		</script></h1>
-	</div>
-	
-    <div data-role="content"><img src="problem/problem104-1.jpg" width="460" height="768" usemap="#Map27">
-      <map name="Map27">
-        <area shape="poly" coords="360,315,93,314,122,467,334,461" href="#select9">
-      </map>
-  </div>
-	<div data-role="footer">
-	  <h4>희슈크림</h4>
-	</div>
-</div>
-
-<div data-role="page" id="select9">
-	<div data-role="header">
-    	<h1>선택하기<br>
-		<script>
-		document.write(point+ " point <br>");
-		</script></h1>
-    </div>
-	<div data-role="content"><img src="image/select.GIF" width="460"  height="768" usemap="#Map28">
-      <map name="Map28">
-        <area shape="poly" coords="196,489,3,488,35,621,176,622" href="#correct9">
-        
-        
-        
-        
-        
-        <area shape="poly" coords="53,19,-3,18,27,170,73,213,117,147,72,13,20,13" href="#wrong9">
-        <area shape="poly" coords="70,244,12,388,82,482,159,396,133,320" href="#wrong9">
-        <area shape="poly" coords="209,274,192,409,209,486,228,441" href="#wrong9">
-        <area shape="poly" coords="206,21,136,45,144,122,166,179,197,199,257,182,262,161,273,110,281,44,259,27" href="#wrong9">
-
-        <area shape="poly" coords="363,512,346,613,340,711,367,753,393,704,383,568" href="#wrong9">
-        <area shape="poly" coords="17,630,29,739,134,738,201,722,185,621" href="#wrong9">
-        <area shape="poly" coords="315,311,248,362,313,474,404,468,444,408,411,310" href="#wrong9">
-        
-        <area shape="poly" coords="369,38,315,173,381,245,420,178" href="#wrong9">
-      </map>
-      
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
-
-
-
-
-<div data-role="page" id="wrong9">
-	
-
-	<div data-role="header">
-   	  <h1>틀렸습니다.  <br>
-    </div>
-	<div data-role="content">
-	  
-  <img src="image/wrong.gif" width="460" height="768" usemap="#Map108">
-  <map name="Map108">
-    <area shape="poly" coords="126,277,123,489,336,488,336,283,327,276" href="#problem9">
-  </map>
-  </div>
-	<div data-role="footer">
-		<h4>희슈크림</h4>
-	</div>
-</div>
-
-
-
-
-
-<div data-role="page" id="correct9">
+<div data-role="page" id="correct7" style="width:480px;">
 	
 
 	<div data-role="header">
    	  <h1>정답입니다  <br>
-		<script>
-		point = point +1
-		document.write(point+ "point <br>");
-		</script>
-   
+<span class="pointdisplay"></span>
+        point
+       </h1>
     </div>
 	<div data-role="content">
 	  
-  <img src="image/correct_answer.gif" width="460" height="768" usemap="#Map29">
-  <map name="Map29">
-    <area shape="rect" coords="127,281,336,488" href="#final">
+  <img src="image/correct_answer.gif" usemap="#Map23">
+  <map name="Map23">
+    <area shape="rect" coords="127,281,336,488" href="#problem8">
   </map>
  
   </div>
@@ -1098,26 +1053,140 @@
 	</div>
 </div>
 
-<div data-role="page" id="final">
+
+
+<div data-role="page" id="correct6" style="width:480px;">
 	
 
 	<div data-role="header">
-   	  <h1> 선사관 미션 클리어  <br>
-      <h1>나의 최종 점수는 ?
-      <script>
-		document.write(point+ "point <br>");
-		</script>
+   	  <h1>정답입니다  <br>
+<span class="pointdisplay"></span>
+        point
+       </h1>
+   
     </div>
 	<div data-role="content">
 	  
-  <img src="image/final.gif" width="460" height="768" usemap="#Map1000">
-  <map name="Map1000">
-    <area shape="poly" coords="49,279,46,529,429,543,416,272,313,274" href="#map">
+  <img src="image/correct_answer.gif" usemap="#Map20">
+  <map name="Map20">
+    <area shape="rect" coords="127,281,336,488" href="#problem7">
   </map>
+ 
   </div>
 	<div data-role="footer">
 		<h4>희슈크림</h4>
 	</div>
 </div>
+
+
+
+
+
+
+<div data-role="page" id="correct5" style="width:480px;">
+	
+
+	<div data-role="header">
+   	  <h1>정답입니다  <br>
+   <span class="pointdisplay"></span>
+        point
+       </h1>
+    </div>
+	<div data-role="content">
+	  
+  <img src="image/correct_answer.gif" usemap="#Map17">
+  <map name="Map17">
+    <area shape="rect" coords="127,281,336,488" href="#problem6">
+  </map>
+ 
+  </div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+
+
+
+
+
+
+<div data-role="page" id="correct4" style="width:480px;">
+	
+
+	<div data-role="header">
+   	  <h1>정답입니다  <br>
+<span class="pointdisplay"></span>
+        point
+       </h1>
+   
+    </div>
+	<div data-role="content">
+	  
+  <img src="image/correct_answer.gif" usemap="#Map14">
+  <map name="Map14">
+    <area shape="rect" coords="127,281,336,488" href="#problem5">
+  </map>
+ 
+  </div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+
+
+<div data-role="page" id="correct3" style="width:480px;">
+	
+
+	<div data-role="header">
+   	  <h1>정답입니다  <br>
+		<span class="pointdisplay"></span>
+        point
+       </h1>
+   
+    </div>
+	<div data-role="content">
+	  
+  <img src="image/correct_answer.gif" usemap="#Map11">
+  <map name="Map11">
+    <area shape="rect" coords="127,281,336,488" href="#problem4">
+  </map>
+ 
+  </div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+
+
+<div data-role="page" id="correct2" style="width:480px;">
+	
+
+	<div data-role="header">
+   	  <h1>정답입니다  <br>
+   		<span class="pointdisplay"></span>
+        point
+       </h1>
+    </div>
+	<div data-role="content">
+	  
+  <img src="image/correct_answer.gif" usemap="#Map8">
+  <map name="Map8">
+    <area shape="rect" coords="127,281,336,488" href="#problem3">
+  </map>
+ 
+  </div>
+	<div data-role="footer">
+		<h4>희슈크림</h4>
+	</div>
+</div>
+
+
+
+
+
+
 </body>
 </html>
